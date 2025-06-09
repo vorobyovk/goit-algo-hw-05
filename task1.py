@@ -8,11 +8,7 @@ class HashTable:
 
     def insert(self, key, value):
         key_hash = self.hash_function(key)
-        key_value = [key, value]
-        # if self.table[key_hash] is None: # Логічна помилка: цей рядок ніколи не виконається як True.
-        # Пояснення:
-        # **якщо не помиляюсь**, у Python порожній список ніколи не є None.
-        # Він просто є порожнім списком, і його логічне значення є False, але це не те саме, що None.
+        key_value = [key, value]        
         for pair in self.table[key_hash]:
             if pair[0] == key:
                 pair[1] = value
@@ -21,10 +17,7 @@ class HashTable:
         return True
 
     def get(self, key):
-        key_hash = self.hash_function(key)
-        # if self.table[key_hash] is not None:
-        # Аналогічна ситуація, як у методі 'insert' — оригінальний рядок можна видалити без негативних наслідків.
-        # (або я щось не розумію)
+        key_hash = self.hash_function(key)        
         for pair in self.table[key_hash]:
             if pair[0] == key:
                 return pair[1]
