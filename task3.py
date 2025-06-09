@@ -100,8 +100,8 @@ def rabin_karp_search(main_string, substring):
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Визначаємо шлях до файлів у підкаталозі "test"
-file1_path = os.path.join(script_dir, "test", "article_1.txt")
-file2_path = os.path.join(script_dir, "test", "article_2.txt")
+file1_path = os.path.join(script_dir, "tests", "text1.txt")
+file2_path = os.path.join(script_dir, "tests", "text2.txt")
 
 # Завантаження текстових файлів
 with open(file1_path, "r", encoding="cp1252") as file:
