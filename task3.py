@@ -106,14 +106,8 @@ file2_path = os.path.join(script_dir, "tests", "text2.txt")
 # Завантаження текстових файлів
 with open(file1_path, "r", encoding="cp1252") as file:
     text1 = file.read()
-with open(file2_path, "r", encoding="cp1252") as file:
-    text2 = file.read()
-
-# Інше кодування:
-# with open(file1_path, "r", encoding="utf-8") as file:
-#     text1 = file.read()
-# with open(file2_path, "r", encoding="utf-8") as file:
-#     text2 = file.read()
+with open(file2_path, "r", encoding="utf-8") as file:
+     text2 = file.read()
 
 # Вибір підрядків для тестування
 existing_substring = "алгоритм"
