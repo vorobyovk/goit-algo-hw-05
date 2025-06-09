@@ -1,7 +1,6 @@
 import timeit
 import os
 
-
 # Реалізація алгоритму Боєра-Мура
 def build_shift_table(pattern):
     table = {}
@@ -10,7 +9,6 @@ def build_shift_table(pattern):
         table[char] = length - index - 1
     table.setdefault(pattern[-1], length)
     return table
-
 
 def boyer_moore_search(text, pattern):
     shift_table = build_shift_table(pattern)
@@ -23,7 +21,6 @@ def boyer_moore_search(text, pattern):
             return i
         i += shift_table.get(text[i + len(pattern) - 1], len(pattern))
     return -1
-
 
 # Реалізація алгоритму Кнута-Морріса-Пратта
 def compute_lps(pattern):
@@ -43,7 +40,6 @@ def compute_lps(pattern):
                 i += 1
     return lps
 
-
 def kmp_search(main_string, pattern):
     M = len(pattern)
     N = len(main_string)
@@ -60,7 +56,6 @@ def kmp_search(main_string, pattern):
         if j == M:
             return i - j
     return -1
-
 
 # Реалізація алгоритму Рабіна-Карпа
 def polynomial_hash(s, base=256, modulus=101):
@@ -95,7 +90,6 @@ def rabin_karp_search(main_string, substring):
                 current_slice_hash += modulus
     return -1
 
-
 # Отримуємо абсолютний шлях до каталогу, де знаходиться скрипт
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -113,14 +107,12 @@ with open(file2_path, "r", encoding="utf-8") as file:
 existing_substring = "алгоритм"
 non_existing_substring = "вигаданий_підрядок"
 
-
 # Функція для вимірювання часу
 def measure_time(func, text, pattern):
     def wrapper():
         return func(text, pattern)
 
     return timeit.timeit(wrapper, number=1000)
-
 
 # Вимірювання часу для статті 1
 print("Article 1:")
@@ -159,26 +151,3 @@ print(
 print(
     f"Rabin-Karp (non-existing): {measure_time(rabin_karp_search, text2, non_existing_substring)}"
 )
-
-
-# Article 1:
-
-# Boyer-Moore (existing): 0.931506378999984
-# Boyer-Moore (non-existing): 0.4010898209999141
-
-# KMP (existing): 4.286350661999677
-# KMP (non-existing): 4.4682860170014465
-
-# Rabin-Karp (existing): 9.509096677000343
-# Rabin-Karp (non-existing): 9.70561644100053
-
-# Article 2:
-
-# Boyer-Moore (existing): 1.4283098630003224
-# Boyer-Moore (non-existing): 0.6422397300011653
-
-# KMP (existing): 6.998151818999759
-# KMP (non-existing): 7.01754259900008
-
-# Rabin-Karp (existing): 14.642822736999733
-# Rabin-Karp (non-existing): 15.205429467001522
