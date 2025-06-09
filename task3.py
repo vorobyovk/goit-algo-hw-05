@@ -66,7 +66,6 @@ def polynomial_hash(s, base=256, modulus=101):
         hash_value = (hash_value + ord(char) * power_of_base) % modulus
     return hash_value
 
-
 def rabin_karp_search(main_string, substring):
     substring_length = len(substring)
     main_string_length = len(main_string)
